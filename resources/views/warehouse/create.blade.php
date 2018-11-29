@@ -1,0 +1,91 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="wrapper wrapper-content animated fadeInRight" ng-controller="WarehouseController as vm" ng-init="vm.readCompanyList({{$_COOKIE['userRole']}}, {{$_COOKIE['company_id']}}, {{$_COOKIE['branch_office_id']}})">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Nuevo Almacen</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>                                                        
+                        </div>
+                    </div>                    
+
+                    <div class="ibox-content">
+                        <br>
+                        <form class="form-horizontal" name="FrmWarehouse" novalidate="novalidate" ng-submit="vm.create()">
+
+
+                           <div class="form-group"><label class="col-lg-2 col-lg-offset-1 control-label">Compañía</label>
+                                <div class="col-lg-6">                                                                    
+                                    <!-- <select id="company" class="form-control" ng-options="company.name for company in vm.CompanyList track by company.id" ng-model="vm.company" required>
+                                    </select> -->
+                                    <select chosen
+                                        no-results-text="'Compañia no encontrada'"
+                                        id="company" 
+                                        class="form-control" 
+                                        ng-options="company.name for company in vm.CompanyList track by company.id"
+                                        ng-model="vm.company"
+                                        required>
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>  
+
+                            <div class="form-group"><label class="col-lg-2 col-lg-offset-1 control-label">Sucursal</label>
+                                <div class="col-lg-6">                                                                    
+                                    <!-- <select id="sucursal" class="form-control" ng-options="sucursal.name for sucursal in vm.BranchOfficesList track by sucursal.id" ng-model="vm.branchOffice" required> -->
+                                    </select>
+                                    <select chosen
+                                        no-results-text="'Sucursal no encontrada'"
+                                        id="sucursal" 
+                                        class="form-control" 
+                                        ng-options="sucursal.name for sucursal in vm.BranchOfficesList track by sucursal.id"
+                                        ng-model="vm.branchOffice"
+                                        required>
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>  
+
+                            <div class="form-group"><label class="col-lg-2 col-lg-offset-1 control-label">Nombre de Almacen</label>
+                                <div class="col-lg-6"><input id="name" type="text" ng-model="vm.warehouse.name" placeholder="Nombre de Almacen" class="form-control" required>
+                                </div>
+                            </div>
+
+                               <div class="form-group"><label class="col-lg-2 col-lg-offset-1 control-label">Ubicación</label>
+                                <div class="col-lg-6"><input id="location" type="text" ng-model="vm.warehouse.location" placeholder="Ubicación" class="form-control" required>
+                                </div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label class="col-lg-2 col-lg-offset-1 control-label">Activo</label>
+                                <input type="hidden" ng-model="vm.warehouse.is_active" value="1"/>
+                                <div class="col-lg-6">
+                                    <toggle id="warehouse" 
+                                            ng-model="vm.toggleSelected" 
+                                            onstyle="btn-success" on="Si" 
+                                            offstyle="btn-danger" off="No">
+                                    </toggle>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-offset-3 col-lg-6">
+                                    <button class="btn btn-md btn-primary" type="submit" >Guardar</button>
+                                    <a class="btn btn-md btn-warning" href="{{url('/warehouse')}}">Volver</a>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>    
+@endsection
