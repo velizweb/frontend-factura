@@ -161,7 +161,7 @@
         vm.readWarehouseList = function(UserRoleId, BranchId){
             var promise = WarehouseService.readAll();
             promise.then(function(pl){
-                if(UserRoleId===1 || UserRoleId ===2)// SuperAdministrador || SuperAdminInventario
+                if(UserRoleId===1 || UserRoleId ===3)// SuperAdministrador || Administrador Sucursal
                    vm.WarehousesList = pl.data;
                 else
                 {
@@ -178,7 +178,7 @@
         vm.readWarehouseDestinationList = function(UserRoleId, BranchId){
             var promise = WarehouseService.readAll();
             promise.then(function(pl){
-                if(UserRoleId===1 || UserRoleId ===2)// SuperAdministrador || SuperAdminInventario
+                if(UserRoleId===1 || UserRoleId ===3)// SuperAdministrador || Administrador Sucursal
                    vm.WarehousesDestinationList = pl.data;
                 else
                 {
@@ -260,7 +260,7 @@
         vm.getAllBranchOffice = function(UserRoleId, idCompany, branchId = null){
             var promise = BranchService.readByCompany(idCompany);
             promise.then(function(pl){
-                if(UserRoleId===1 || UserRoleId ===2)// SuperAdministrador || SuperAmdinInventario
+                if(UserRoleId===1 || UserRoleId ===3)// SuperAdministrador || Administrador Sucursal
                    vm.BranchOfficesList = pl.data;
                 else
                 {

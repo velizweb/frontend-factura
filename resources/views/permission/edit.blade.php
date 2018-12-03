@@ -59,7 +59,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-lg-6">
+                            <div class="form-group col-lg-2">
                                 <table class="table table-hover col-lg-offset-6">
                                     <thead>
                                         <tr>                                        
