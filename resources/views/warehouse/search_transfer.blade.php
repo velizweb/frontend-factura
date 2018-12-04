@@ -38,7 +38,7 @@
                                 </div>
                             </div>  
     
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label class="col-lg-2 col-lg-offset-1 control-label">Almacen Origen</label>
                                 <div class="col-lg-4">
                                     <input type="text" class="form-control centrarInput" readonly="" ng-model="vm.dataTransfer.warehouse_origin">
@@ -61,8 +61,48 @@
                                 <div class="col-lg-4">
                                     <input type="text" class="form-control centrarInput" readonly="" ng-model="vm.dataTransfer.created_at">
                                 </div>
-                            </div>
+                            </div> -->
                             
+                            <div class="row">
+                                <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Items</h5>              
+                                        </div>    
+                                        <div class="ibox-content">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <table class="table table-responsive">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 35%"><center>Producto</center></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="itemLine in vm.Items">
+                                                                <td>
+                                                                    <b>Almacen Origen:</b> @{{itemLine.warehouse_origin.name}}
+                                                                    <br>
+                                                                    <b>Producto:</b> @{{itemLine.product.name}}@{{itemLine.product.principal_code}} 
+                                                                    <br/> 
+                                                                    <b>Descripción:</b> @{{itemLine.product.description}}
+                                                                    <br>
+                                                                    <b>Cantidad Transferida:</b> @{{itemLine.amount_send}}
+                                                                    <br>
+                                                                    <b>Fecha Envio:</b> @{{itemLine.created_at}}
+                                                                </td>
+                                                            </tr>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>                                   
+                                            </div>                                  
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <div class="col-lg-offset-3 col-lg-6">
                                     <button class="btn btn-md btn-primary" type="submit" ng-disabled="!vm.btn_accept">Transferir</button>

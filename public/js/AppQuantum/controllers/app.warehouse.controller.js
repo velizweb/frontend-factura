@@ -498,22 +498,30 @@
                 if(pl.data.length == 0){
                     toastr.error("El documneto de transferencia no existe.");
                     vm.Product.document_number = '';
-                    vm.dataTransfer.warehouse_origin = "";
-                    vm.dataTransfer.product = "";
-                    vm.dataTransfer.amount_send = "";
-                    vm.dataTransfer.created_at = "";
+                    // vm.dataTransfer.warehouse_origin = "";
+                    // vm.dataTransfer.product = "";
+                    // vm.dataTransfer.amount_send = "";
+                    // vm.dataTransfer.created_at = "";
                     vm.btn_accept = !vm.btn_accept;
                 } else {
-                    vm.dataTransfer.warehouse_origin = pl.data.warehouse_origin.name;
-                    vm.dataTransfer.product = pl.data.product.name;
-                    vm.dataTransfer.amount_send = pl.data.amount_send;
-                    vm.dataTransfer.created_at = pl.data.created_at;
+                    vm.Items = pl.data;
+
+                    // vm.dataTransfer.warehouse_origin = pl.data.warehouse_origin.name;
+                    // vm.dataTransfer.product = pl.data.product.name;
+                    // vm.dataTransfer.amount_send = pl.data.amount_send;
+                    // vm.dataTransfer.created_at = pl.data.created_at;
                     vm.btn_accept = !vm.btn_accept;
                 }
             })
         }
         
         vm.acceptTransfer = function () {
+            if (vm.Product.document_number === '' || vm.Product.document_number === undefined) {
+                toastr.error("Debe de ingresar un Número de Documento.");
+                vm.Items = [];
+                return false;
+            }
+
             var promise = WarehouseService.acceptTransfer(vm.Product.document_number);
             promise.then(function(pl){
                 if(pl.data == 1){
